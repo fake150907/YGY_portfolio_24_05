@@ -1,41 +1,50 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+	rel="stylesheet">
 <style>
-.div {
-	background-color: #fff;
+:root {
+	--bgc-color: #263360;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Playfair Display', sans-serif;
+}
+
+.portfolio-container {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	align-items: center;
+	width: 100%;
 }
 
-.div-2 {
+.portfolio-box {
 	background-color: var(--bgc-color, #263360);
 	display: flex;
 	width: 100%;
 	flex-direction: column;
 	align-items: center;
-	padding: 0 20px 80px;
 }
 
-@media ( max-width : 991px) {
-	.div-2 {
-		max-width: 100%;
-	}
-}
-
-.div-3 {
-	disply: flex;
+.home-page {
+	display: flex;
 	flex-direction: column;
 	overflow: hidden;
 	align-self: stretch;
 	position: relative;
-	display: flex;
-	min-height: 1080px;
-	width: 100%;
+	min-height: 800px;
+	width: 93.5%;
 	align-items: center;
 	font-size: 30px;
 	color: #fff;
@@ -44,114 +53,59 @@
 	padding: 80px 60px;
 }
 
-@media ( max-width : 991px) {
-	.div-3 {
-		max-width: 100%;
-		padding: 0 20px;
-	}
-}
-
-.img {
+.home-img {
 	position: absolute;
 	inset: 0;
-	height: 100%;
+	height: 99.5%;
 	width: 100%;
 	object-fit: cover;
 	object-position: center;
 }
 
-.div-4 {
+.text-box {
 	position: relative;
 	display: flex;
-	width: 870px;
-	max-width: 100%;
+	width: 100%;
+	max-width: 1000px;
 	flex-direction: column;
 	align-items: center;
-	margin: 173px 0 35px;
 }
 
-@media ( max-width : 991px) {
-	.div-4 {
-		margin-top: 40px;
-	}
-}
-
-.div-5 {
+.Greetings-box {
 	display: flex;
 	gap: 20px;
 	white-space: nowrap;
 }
 
-@media ( max-width : 991px) {
-	.div-5 {
-		flex-wrap: wrap;
-		white-space: initial;
-	}
-}
-
-.div-6 {
-	font-family: Playfair Display, sans-serif;
+.Greetings1, .Greetings2, .Greetings3 {
+	font-family: 'Playfair Display', sans-serif;
 	flex-grow: 1;
 }
 
-.div-7 {
-	font-family: Playfair Display, sans-serif;
-	flex-grow: 1;
-	flex-basis: auto;
-}
-
-.div-8 {
-	font-family: Playfair Display, sans-serif;
-	flex-grow: 1;
-	flex-basis: auto;
-}
-
-.div-9 {
+.Welcome {
 	align-self: stretch;
 	margin-top: 177px;
-	font: 80px Playfair Display, sans-serif;
+	font-size: 80px;
+	text-align: center;
 }
 
-@media ( max-width : 991px) {
-	.div-9 {
-		max-width: 100%;
-		margin-top: 40px;
-		font-size: 40px;
-	}
-}
-
-.div-10 {
+.byYGY {
 	margin-top: 34px;
-	font: 80px Playfair Display, sans-serif;
+	font-size: 80px;
 }
 
-@media ( max-width : 991px) {
-	.div-10 {
-		max-width: 100%;
-		font-size: 40px;
-	}
-}
-
-.img-2 {
-	aspect-ratio: 1.14;
-	object-fit: auto;
-	object-position: center;
+.Scroll-down {
 	width: 80px;
 	margin-top: 192px;
 }
 
-@media ( max-width : 991px) {
-	.img-2 {
-		margin-top: 40px;
-	}
-}
-
-.div-11 {
-	font-family: Playfair Display, sans-serif;
+.Scroll-down-text {
+	font-family: 'Playfair Display', sans-serif;
 	margin-top: 8px;
+	text-align: center;
 }
 
-.div-12 {
+.Head-bar {
 	display: flex;
 	margin-top: 39px;
 	width: 100%;
@@ -160,333 +114,136 @@
 	font-size: 30px;
 	color: #fff;
 	font-weight: 400;
+	display: fix;
 }
 
 @media ( max-width : 991px) {
-	.div-12 {
+	.Head-bar {
 		max-width: 100%;
 		flex-wrap: wrap;
 	}
 }
 
-.div-13 {
-	font-family: Playfair Display, sans-serif;
+.logo, .home-icon, .about-icon, .project-icon, .skills-icon,
+	.contact-icon {
+	font-family: 'Playfair Display', sans-serif;
 	flex-grow: 1;
 	flex-basis: auto;
 }
 
-.div-14 {
+.head-icons {
 	display: flex;
 	gap: 20px;
 	white-space: nowrap;
 }
 
-@media ( max-width : 991px) {
-	.div-14 {
-		max-width: 100%;
-		flex-wrap: wrap;
-		white-space: initial;
-	}
-}
-
-.div-15 {
-	font-family: Playfair Display, sans-serif;
-	margin: auto 0;
-}
-
-.div-16 {
-	font-family: Playfair Display, sans-serif;
-}
-
-.div-17 {
-	font-family: Playfair Display, sans-serif;
-}
-
-.div-18 {
-	font-family: Playfair Display, sans-serif;
-}
-
-.div-19 {
-	font-family: Playfair Display, sans-serif;
-	flex-grow: 1;
-	flex-basis: auto;
-}
-
-.div-20 {
+.head-line {
 	border-color: rgba(255, 255, 255, 1);
 	border-style: solid;
 	border-width: 1px;
 	background-color: #fff;
 	margin-top: 30px;
-	width: 1800px;
-	max-width: 100%;
-	height: 1px;
-}
-
-.div-21 {
-	color: #fff;
-	margin-top: 127px;
-	font: 700 50px Playfair Display, -apple-system, Roboto, Helvetica,
-		sans-serif;
-}
-
-@media ( max-width : 991px) {
-	.div-21 {
-		margin-top: 40px;
-		font-size: 40px;
-	}
-}
-
-.div-22 {
-	margin-top: 58px;
-	width: 1290px;
-	max-width: 100%;
-}
-
-@media ( max-width : 991px) {
-	.div-22 {
-		margin-top: 40px;
-	}
-}
-
-.div-23 {
-	gap: 20px;
-	display: flex;
-}
-
-@media ( max-width : 991px) {
-	.div-23 {
-		flex-direction: column;
-		align-items: stretch;
-		gap: 0px;
-	}
-}
-
-.column {
-	display: flex;
-	flex-direction: column;
-	line-height: normal;
-	width: 37%;
-	margin-left: 0px;
-}
-
-@media ( max-width : 991px) {
-	.column {
-		width: 100%;
-	}
-}
-
-.img-3 {
-	aspect-ratio: 0.8;
-	object-fit: auto;
-	object-position: center;
 	width: 100%;
-	flex-grow: 1;
+	max-width: 1800px;
+	height: 0.5px;
 }
 
-@media ( max-width : 991px) {
-	.img-3 {
-		max-width: 100%;
-		margin-top: 40px;
-	}
+.about-page-text {
+	color: #fff;
+	margin-top: 30px;
+	font-weight: 700;
+	font-size: 40px;
+	text-align: center;
 }
 
-.column-2 {
+.about-page {
+	margin-top: 30px;
+	width: 100%;
+	max-width: 1290px;
+}
+
+.about-box {
 	display: flex;
+	gap: 20px;
 	flex-direction: column;
+	align-items: center;
+	width: 1400px;
+}
+
+.about-img-box {
+	width: 100%;
+	max-width: 40%;
+	margin-right: 10px;
+}
+
+.about-img {
+	width: 100%;
+	aspect-ratio: 0.8;
+	object-fit: cover;
+	border-radius: 15px;
+	height: 90%;
+}
+
+.about-info {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 	line-height: normal;
-	width: 63%;
-	margin-left: 20px;
+	width: 100%;
+	max-width: 90%;
 }
 
-@media ( max-width : 991px) {
-	.column-2 {
-		width: 100%;
-	}
-}
-
-.div-24 {
-	display: flex;
-	margin-top: 25px;
-	flex-grow: 1;
-	flex-direction: column;
+.about-info-box {
 	font-size: 25px;
 	color: #fff;
 	font-weight: 400;
+	margin-left: 10px;
 }
 
-@media ( max-width : 991px) {
-	.div-24 {
-		max-width: 100%;
-		margin-top: 40px;
-	}
+.introduce-text {
+	font-size: 30px;
 }
 
-.div-25 {
-	font: 35px Playfair Display, sans-serif;
-}
-
-@media ( max-width : 991px) {
-	.div-25 {
-		max-width: 100%;
-	}
-}
-
-.div-26 {
+.info-box {
 	display: flex;
-	margin-top: 20px;
-	width: 515px;
-	max-width: 100%;
+	width: 100%;
+	max-width: 515px;
 	gap: 20px;
-	font-size: 35px;
+	font-size: 30px;
 	justify-content: space-between;
 }
 
-@media ( max-width : 991px) {
-	.div-26 {
-		flex-wrap: wrap;
-	}
-}
-
-.div-27 {
-	align-self: start;
+.info-title-box {
 	display: flex;
-	margin-top: 4px;
 	flex-direction: column;
 	white-space: nowrap;
 }
 
-@media ( max-width : 991px) {
-	.div-27 {
-		white-space: initial;
-	}
-}
-
-.div-28 {
-	font-family: Playfair Display, sans-serif;
-}
-
-.div-29 {
-	font-family: Playfair Display, sans-serif;
-	margin-top: 31px;
-}
-
-.div-30 {
+.info-value-box {
 	display: flex;
 	flex-direction: column;
 }
 
-.div-31 {
-	font-family: Playfair Display, sans-serif;
+.info-cur-title {
+	font: 30px Playfair Display, sans-serif;
 }
 
-.div-32 {
-	font-family: Inter, sans-serif;
-	margin-top: 27px;
+.info-cur-value1, .info-cur-value2, .info-cur-value3, .info-cur-value4 {
+	font-family: 'Playfair Display', sans-serif;
 }
 
-.div-33 {
-	margin-top: 30px;
-	font: 35px Playfair Display, sans-serif;
-}
-
-@media ( max-width : 991px) {
-	.div-33 {
-		max-width: 100%;
-	}
-}
-
-.div-34 {
-	font-family: Playfair Display, sans-serif;
-	margin-top: 31px;
-}
-
-@media ( max-width : 991px) {
-	.div-34 {
-		max-width: 100%;
-	}
-}
-
-.div-35 {
-	margin-top: 22px;
-	font: 35px Playfair Display, sans-serif;
-}
-
-@media ( max-width : 991px) {
-	.div-35 {
-		max-width: 100%;
-	}
-}
-
-.div-36 {
-	font-family: Playfair Display, sans-serif;
-	margin-top: 16px;
-}
-
-@media ( max-width : 991px) {
-	.div-36 {
-		max-width: 100%;
-	}
-}
-
-.div-37 {
-	font-family: Playfair Display, sans-serif;
-	margin-top: 12px;
-}
-
-@media ( max-width : 991px) {
-	.div-37 {
-		max-width: 100%;
-	}
-}
-
-.div-38 {
-	font-family: Playfair Display, sans-serif;
-	margin-top: 12px;
-}
-
-@media ( max-width : 991px) {
-	.div-38 {
-		max-width: 100%;
-	}
-}
-
-.div-39 {
-	font-family: Playfair Display, sans-serif;
-	margin-top: 14px;
-}
-
-@media ( max-width : 991px) {
-	.div-39 {
-		max-width: 100%;
-	}
-}
-
-.img-4 {
-	aspect-ratio: 4.55;
-	object-fit: auto;
-	object-position: center;
-	width: 276px;
-	margin-top: 23px;
-	max-width: 100%;
-}
-
-.div-40 {
+.project-page-title {
 	color: #fff;
 	margin-top: 388px;
-	font: 700 50px Playfair Display, -apple-system, Roboto, Helvetica,
-		sans-serif;
+	font-weight: 700;
+	font-size: 50px;
+	text-align: center;
 }
 
-@media ( max-width : 991px) {
-	.div-40 {
-		margin-top: 40px;
-		font-size: 40px;
-	}
-}
-
-.div-41 {
+.project-page {
 	display: flex;
+	flex-direction: column;
+	align-items: center;
 	width: 100%;
 	max-width: 1583px;
 	gap: 20px;
@@ -494,178 +251,223 @@
 	margin: 67px 0 1687px;
 }
 
-@media ( max-width : 991px) {
-	.div-41 {
-		max-width: 100%;
-		flex-wrap: wrap;
-		margin: 40px 0;
-	}
-}
-
-.div-42 {
+.project-page-box {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 }
 
-@media ( max-width : 991px) {
-	.div-42 {
-		max-width: 100%;
-	}
-}
-
-.div-43 {
+.project-page-value {
 	display: flex;
 	gap: 20px;
 	justify-content: space-between;
 }
 
+.project-img {
+	width: 100%;
+	aspect-ratio: 1.75;
+	object-fit: cover;
+}
+
+.project-info {
+	color: #fff;
+	margin-top: 31px;
+	font-weight: 700;
+	font-size: 40px;
+	text-align: center;
+}
+
+.right-btn, .left-btn {
+	width: 60px;
+	aspect-ratio: 0.75;
+	fill: #fff;
+	margin: auto 0;
+}
+
+.velog-icon, .github-icon {
+	width: 60px;
+	height: 60px;
+}
+
+.velog-icon {
+	margin-left: 10px;
+}
+
+/* Responsive Styles */
 @media ( max-width : 991px) {
-	.div-43 {
-		max-width: 100%;
+	.home-page {
+		width: 100%;
+		padding: 0 20px;
+	}
+	.text-box {
+		margin-top: 40px;
+	}
+	.Welcome, .byYGY {
+		font-size: 40px;
+		margin-top: 40px;
+	}
+	.Scroll-down {
+		margin-top: 40px;
+	}
+	.Head-bar {
 		flex-wrap: wrap;
 	}
-}
-
-.img-5 {
-	aspect-ratio: 0.75;
-	object-fit: auto;
-	object-position: center;
-	width: 60px;
-	fill: #fff;
-	margin: auto 0;
-}
-
-.img-6 {
-	aspect-ratio: 1.75;
-	object-fit: auto;
-	object-position: center;
-	width: 100%;
-}
-
-@media ( max-width : 991px) {
-	.img-6 {
-		max-width: 100%;
+	.head-icons {
+		flex-wrap: wrap;
 	}
-}
-
-.div-44 {
-	color: #fff;
-	align-self: end;
-	margin: 31px 30px 0 0;
-	font: 700 40px Playfair Display, -apple-system, Roboto, Helvetica,
-		sans-serif;
-}
-
-@media ( max-width : 991px) {
-	.div-44 {
-		max-width: 100%;
+	.about-page-text {
+		margin-top: 40px;
+		font-size: 40px;
+	}
+	.about-page {
+		margin-top: 40px;
+	}
+	.about-box {
+		flex-direction: column;
+	}
+	.about-img-box, .about-info {
+		width: 100%;
+		margin-left: 0;
+	}
+	.about-img {
+		margin-top: 40px;
+	}
+	.about-info-box {
+		margin-top: 40px;
+	}
+	.info-box {
+		flex-wrap: wrap;
+	}
+	.info-title-box, .info-value-box {
+		white-space: initial;
+	}
+	.project-page-title {
+		margin-top: 40px;
+		font-size: 40px;
+	}
+	.project-page {
+		flex-wrap: wrap;
+		margin: 40px 0;
+	}
+	.project-page-value {
+		flex-wrap: wrap;
+	}
+	.project-img {
+		margin-top: 40px;
+	}
+	.project-info {
 		margin-right: 10px;
 	}
-}
-
-.img-7 {
-	aspect-ratio: 0.75;
-	object-fit: auto;
-	object-position: center;
-	width: 60px;
-	fill: #fff;
-	margin: auto 0;
 }
 </style>
 </head>
 <body>
-	<div class="div">
-		<div class="div-2">
-			<div class="div-3">
-				<img loading="lazy" srcset="..." class="img" />
-				<div class="div-4">
-					<div class="div-5">
-						<div class="div-6">Hello</div>
-						<div class="div-7">æ»≥Á«œººø‰</div>
-						<div class="div-8">™≥™Û™À™¡™œ</div>
+	<section>
+		<div class="portfolio-container">
+			<div class="portfolio-box">
+				<div class="home-page">
+					<img
+						src="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=2094&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+						class="home-img" />
+					<div class="text-box">
+						<div class="Greetings-box">
+							<div class="Greetings1">Hello</div>
+							<div class="Greetings2">ÏïàÎÖïÌïòÏÑ∏Ïöî</div>
+							<div class="Greetings3">„Åì„Çì„Å´„Å°„ÅØ</div>
+						</div>
+						<div class="Welcome">Welcome to My Portfolio</div>
+						<div class="byYGY">By Yun Ga Yeon</div>
+						<img
+							src="https://cdn.builder.io/api/v1/image/assets/TEMP/b167082b1c1767fde68870850e583cb9a199cec8321417447c543b66a445b2b8?"
+							class="Scroll-down" />
+						<div class="Scroll-down-text">Scroll Down</div>
 					</div>
-					<div class="div-9">Welcome to My Portfolio</div>
-					<div class="div-10">By Yun Ga Yeon</div>
-					<img loading="lazy"
-						src="https://cdn.builder.io/api/v1/image/assets/TEMP/b167082b1c1767fde68870850e583cb9a199cec8321417447c543b66a445b2b8?"
-						class="img-2" />
-					<div class="div-11">Scroll Down</div>
 				</div>
-			</div>
-			<div class="div-12">
-				<div class="div-13">Yun Ga Yeon</div>
-				<div class="div-14">
-					<div class="div-15">Home</div>
-					<div class="div-16">About</div>
-					<div class="div-17">Project</div>
-					<div class="div-18">Skills</div>
-					<div class="div-19">Contact</div>
-				</div>
-			</div>
-			<div class="div-20"></div>
-			<div class="div-21">About Me</div>
-			<div class="div-22">
-				<div class="div-23">
-					<div class="column">
-						<img loading="lazy" srcset="..." class="img-3" />
+				<div class="Head-bar">
+					<div class="logo">Yun Ga Yeon</div>
+					<div class="head-icons">
+						<div class="home-icon">Home</div>
+						<div class="about-icon">About</div>
+						<div class="project-icon">Project</div>
+						<div class="skills-icon">Skills</div>
+						<div class="contact-icon">Contact</div>
 					</div>
-					<div class="column-2">
-						<div class="div-24">
-							<div class="div-25">æ»≥Á«œººø‰, ∞≥πﬂ¿⁄ ≤ﬁ≥™π´ ¿±∞°ø¨¿‘¥œ¥Ÿ.</div>
-							<div class="div-26">
-								<div class="div-27">
-									<div class="div-28">Name</div>
-									<div class="div-29">Tel</div>
+				</div>
+				<div class="head-line"></div>
+				<div class="about-page-text">About Me</div>
+				<div class="about-page">
+					<div class="about-box">
+						<div class="about-info">
+							<div class="about-img-box">
+								<img src="https://velog.velcdn.com/images/fake150907/post/7bcb9994-a70c-4bd9-b0d4-8d18935026a6/image.jpg"
+									class="about-img" />
+							</div>
+							<div class="about-info-box">
+								<div class="introduce-text">ÏïàÎÖïÌïòÏÑ∏Ïöî, Í∞úÎ∞úÏûê ÍøàÎÇòÎ¨¥ Ïú§Í∞ÄÏó∞ÏûÖÎãàÎã§.</div>
+								<div class="info-box">
+									<div class="info-title-box">
+										<div class="info-name">Name</div>
+										<div class="info-Tel">Tel</div>
+									</div>
+									<div class="info-value">
+										<div class="info-name-value">Ïú§Í∞ÄÏó∞ ( Yun Ga Yeon)</div>
+										<div class="info-Tel-value">01054084893</div>
+									</div>
 								</div>
-								<div class="div-30">
-									<div class="div-31">¿±∞°ø¨ ( Yun Ga Yeon)</div>
-									<div class="div-32">01054084893</div>
+								<div style="font-size: 30px" class="info-Edu">Education</div>
+								<div class="info-Edu-value">
+									<ul>
+										<li>
+											<span>ÌïúÍµ≠Ìò∏ÌÖîÍ¥ÄÍ¥ëÌïôÍµê ( 2019.03~2019.12)</span>
+										</li>
+										<li>
+											<span>Ïû•ÏàòÍ≥†Îì±ÌïôÍµê ( 2016.03~2019.02)</span>
+										</li>
+									</ul>
+								</div>
+								<div class="info-cur-value4">
+									<div class="info-cur-title">Curriculum</div>
+									<ul>
+										<li class="info-cur-value1">JAVA(2023.10~2023.11)</li>
+										<li class="info-cur-value2">DBMS (2023,11~12)</li>
+										<li class="info-cur-value3">C (2023.11~2024.01)</li>
+										<li class="info-cur-value4">
+											<span style="font-size: 22px">[ÏÇ∞ÎåÄÌäπ] Í≥µÍ≥µÎç∞Ïù¥ÌÑ∞Î•º ÌôúÏö©Ìïú ÏõπÏï±Í∞úÎ∞úÏûê ÏñëÏÑ±Í≥ºÏ†ï ( 2023.12~2024.05 )</span>
+										</li>
+									</ul>
+									<a target="blank" href="https://github.com/fake150907">
+										<img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-social-github-256.png" class="github-icon" />
+									</a>
+									<a target="blank"  href="https://velog.io/@fake150907/posts">
+										<img
+											src="https://velog.velcdn.com/images/velog/profile/9aa07f66-5fcd-41f4-84f2-91d73afcec28/green%20favicon.png"
+											class="velog-icon" />
+									</a>
 								</div>
 							</div>
-							<div class="div-33">Education</div>
-							<div class="div-34">
-								<ul>
-									<li>
-										¿Âºˆ∞ÌµÓ«–±≥ (
-										<span style="font-size: 28px">2016.03~2019.02)</span>
-									</li>
-								</ul>
-							</div>
-							<div class="div-35">Curriculum</div>
-							<div class="div-36">JAVA(2023.10~2023.11)</div>
-							<div class="div-37">DBMS (2023,11~12)</div>
-							<div class="div-38">C (2023.11~2024.01)</div>
-							<div class="div-39">
-								<ul>
-									<li>
-										[ªÍ¥Î∆Ø] ∞¯∞¯µ•¿Ã≈Õ∏¶ »∞øÎ«— ¿•æ€∞≥πﬂ¿⁄ æÁº∫∞˙¡§ (
-										<span style="font-size: 28px">2023.12~2024.05</span>
-										)
-									</li>
-								</ul>
-							</div>
-							<img loading="lazy" srcset="..." class="img-4" />
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="div-40">Project</div>
-			<div class="div-41">
-				<div class="div-42">
-					<div class="div-43">
-						<img loading="lazy"
-							src="https://cdn.builder.io/api/v1/image/assets/TEMP/f02c3d3ac77704b2d81dda0df14addefffb5e3b7b0192c63447dd8b6038785ab?"
-							class="img-5" />
-						<img loading="lazy" srcset="..." class="img-6" />
+				<div class="project-page-title">Project</div>
+				<div class="project-page">
+					<div class="project-page-box">
+						<div class="project-page-value">
+							<img loading="lazy"
+								src="https://cdn.builder.io/api/v1/image/assets/TEMP/f02c3d3ac77704b2d81dda0df14addefffb5e3b7b0192c63447dd8b6038785ab?"
+								class="right-btn" />
+							<img
+								src="https://camo.githubusercontent.com/83b70f9337f8bda37ddb09be20cdbeb42936da563d085b87fbabcc2fc0c7f521/68747470733a2f2f76656c6f672e76656c63646e2e636f6d2f696d616765732f696e73616d6a753330302f706f73742f38323966316439652d623533612d346433352d623934352d3932383866636630376666392f696d6167652e706e67"
+								class="project-img" />
+						</div>
+						<div class="project-info">Ïó¨Ìñâ,Ïò∑,ÎÇ†Ïî® 3Í∞ÄÏßÄÎ•º ÏúµÌï©Ìïú GPTÍ∏∞Î∞ò Ïó¨Ìñâ ÏùºÏ†ï ÎßåÎì§Í∏∞ ÌîÑÎ°úÏ†ùÌä∏</div>
 					</div>
-					<div class="div-44">ø©«‡,ø ,≥Øææ 3∞°¡ˆ∏¶ ¿∂«’«— GPT±‚π› ø©«‡ ¿œ¡§ ∏∏µÈ±‚ «¡∑Œ¡ß∆Æ</div>
+					<img loading="lazy"
+						src="https://cdn.builder.io/api/v1/image/assets/TEMP/e939fb0386ea40392c99a548c6d74a7a891eb3d70b8972e8b59c8273463337fc?"
+						class="left-btn" />
 				</div>
-				<img loading="lazy"
-					src="https://cdn.builder.io/api/v1/image/assets/TEMP/e939fb0386ea40392c99a548c6d74a7a891eb3d70b8972e8b59c8273463337fc?"
-					class="img-7" />
 			</div>
 		</div>
-	</div>
+	</section>
 
 </body>
 </html>
