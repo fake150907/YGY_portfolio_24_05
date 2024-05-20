@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -6,9 +7,27 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 테일윈드 불러오기 -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" /> -->
+<link
+	href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css"
+	rel="stylesheet" type="text/css" />
+
+<!-- daisy ui 불러오기 -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/daisyui/4.6.1/full.css" />
+
+<!-- 폰트어썸 불러오기 -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+<!-- 제이쿼리 불러오기 -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+<link
+	href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
 	rel="stylesheet">
 <style>
 :root {
@@ -44,7 +63,7 @@ body {
 	align-self: stretch;
 	position: relative;
 	min-height: 800px;
-	width: 93.5%;
+	width: 100%;
 	align-items: center;
 	font-size: 30px;
 	color: #fff;
@@ -60,6 +79,18 @@ body {
 	width: 100%;
 	object-fit: cover;
 	object-position: center;
+}
+
+.background-image {
+	background-image:
+		url('https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=2094&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 100vh;
+	overflow: auto;
+	background-size: cover;
+	align-self: stretch;
 }
 
 .text-box {
@@ -114,7 +145,6 @@ body {
 	font-size: 30px;
 	color: #fff;
 	font-weight: 400;
-	display: fix;
 }
 
 @media ( max-width : 991px) {
@@ -137,15 +167,33 @@ body {
 	white-space: nowrap;
 }
 
+/* 가운데 라인을 조정하여 헤더가 정렬되도록 수정 */
 .head-line {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
 	border-color: rgba(255, 255, 255, 1);
 	border-style: solid;
-	border-width: 1px;
-	background-color: #fff;
-	margin-top: 30px;
+	border-bottom-width: 1px;
 	width: 100%;
 	max-width: 1800px;
-	height: 0.5px;
+	margin-top: 50px;
+}
+
+/* 반응형 디자인을 위한 미디어 쿼리 추가 */
+@media ( max-width : 991px) {
+	.head-line {
+		padding: 0 10px; /* 작은 화면에서의 패딩 조정 */
+	}
+	.head-line {
+		width: calc(100% - 20px); /* 작은 화면에서 가로 너비 조정 */
+	}
+}
+
+@media ( max-width : 991px) {
+	.head-line {
+		max-width: 100%;
+	}
 }
 
 .about-page-text {
@@ -362,13 +410,10 @@ body {
 </style>
 </head>
 <body>
-	<section>
+	<section class="section">
 		<div class="portfolio-container">
 			<div class="portfolio-box">
-				<div class="home-page">
-					<img
-						src="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=2094&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-						class="home-img" />
+				<div class="home-page section background-image">
 					<div class="text-box">
 						<div class="Greetings-box">
 							<div class="Greetings1">Hello</div>
@@ -383,7 +428,7 @@ body {
 						<div class="Scroll-down-text">Scroll Down</div>
 					</div>
 				</div>
-				<div class="Head-bar">
+				<header class="Head-bar">
 					<div class="logo">Yun Ga Yeon</div>
 					<div class="head-icons">
 						<div class="home-icon">Home</div>
@@ -392,14 +437,15 @@ body {
 						<div class="skills-icon">Skills</div>
 						<div class="contact-icon">Contact</div>
 					</div>
-				</div>
-				<div class="head-line"></div>
-				<div class="about-page-text">About Me</div>
-				<div class="about-page">
+					<div class="head-line"></div>
+				</header>
+				<div class="about-page section">
+					<div class="about-page-text">About Me</div>
 					<div class="about-box">
 						<div class="about-info">
 							<div class="about-img-box">
-								<img src="https://velog.velcdn.com/images/fake150907/post/7bcb9994-a70c-4bd9-b0d4-8d18935026a6/image.jpg"
+								<img
+									src="https://velog.velcdn.com/images/fake150907/post/7bcb9994-a70c-4bd9-b0d4-8d18935026a6/image.jpg"
 									class="about-img" />
 							</div>
 							<div class="about-info-box">
@@ -432,13 +478,16 @@ body {
 										<li class="info-cur-value2">DBMS (2023,11~12)</li>
 										<li class="info-cur-value3">C (2023.11~2024.01)</li>
 										<li class="info-cur-value4">
-											<span style="font-size: 22px">[산대특] 공공데이터를 활용한 웹앱개발자 양성과정 ( 2023.12~2024.05 )</span>
+											<span style="font-size: 22px">[산대특] 공공데이터를 활용한 웹앱개발자
+												양성과정 ( 2023.12~2024.05 )</span>
 										</li>
 									</ul>
 									<a target="blank" href="https://github.com/fake150907">
-										<img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-social-github-256.png" class="github-icon" />
+										<img
+											src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-social-github-256.png"
+											class="github-icon" />
 									</a>
-									<a target="blank"  href="https://velog.io/@fake150907/posts">
+									<a target="blank" href="https://velog.io/@fake150907/posts">
 										<img
 											src="https://velog.velcdn.com/images/velog/profile/9aa07f66-5fcd-41f4-84f2-91d73afcec28/green%20favicon.png"
 											class="velog-icon" />
@@ -448,8 +497,8 @@ body {
 						</div>
 					</div>
 				</div>
-				<div class="project-page-title">Project</div>
-				<div class="project-page">
+				<div class="project-page section">
+					<div class="project-page-title">Project</div>
 					<div class="project-page-box">
 						<div class="project-page-value">
 							<img loading="lazy"
@@ -459,7 +508,8 @@ body {
 								src="https://camo.githubusercontent.com/83b70f9337f8bda37ddb09be20cdbeb42936da563d085b87fbabcc2fc0c7f521/68747470733a2f2f76656c6f672e76656c63646e2e636f6d2f696d616765732f696e73616d6a753330302f706f73742f38323966316439652d623533612d346433352d623934352d3932383866636630376666392f696d6167652e706e67"
 								class="project-img" />
 						</div>
-						<div class="project-info">여행,옷,날씨 3가지를 융합한 GPT기반 여행 일정 만들기 프로젝트</div>
+						<div class="project-info">여행,옷,날씨 3가지를 융합한 GPT기반 여행 일정 만들기
+							프로젝트</div>
 					</div>
 					<img loading="lazy"
 						src="https://cdn.builder.io/api/v1/image/assets/TEMP/e939fb0386ea40392c99a548c6d74a7a891eb3d70b8972e8b59c8273463337fc?"
@@ -468,6 +518,44 @@ body {
 			</div>
 		</div>
 	</section>
+	<script>
+		// Scroll animation using jQuery
+		$(document).ready(function() {
+			var win_h = $(window).height();
 
+			$(".section").each(function(index) {
+				$(this).attr("data-index", win_h * index);
+			});
+
+			$(".section").on("mousewheel", function(e) {
+				var sectionPos = parseInt($(this).attr("data-index"));
+				if (e.originalEvent.wheelDelta >= 0) {
+					$("html, body").stop().animate({
+						scrollTop : sectionPos - win_h
+					});
+					return false;
+				} else if (e.originalEvent.wheelDelta < 0) {
+					$("html,body").stop().animate({
+						scrollTop : sectionPos + win_h
+					});
+					return false;
+				}
+			});
+		});
+	</script>
+	<script>
+		window.addEventListener('scroll', function() {
+			var scroll = window.scrollY;
+			var header = document.querySelector('header');
+
+			// 스크롤이 일정 양 이상 되면 헤더를 나타나게 함
+			if (scroll > 870) {
+				header.style.opacity = 1;
+			} else {
+				header.style.opacity = 0;
+				header.style.backgroundColor = 'transparent'; // 헤더의 배경색을 투명으로 변경
+			}
+		});
+	</script>
 </body>
 </html>
