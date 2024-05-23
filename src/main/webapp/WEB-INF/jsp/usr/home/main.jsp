@@ -7,16 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@ include file="../common/toastUiEditorLib.jspf"%>
 <!-- 테일윈드 불러오기 -->
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" /> -->
 <link
 	href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css"
 	rel="stylesheet" type="text/css" />
-
-<!-- daisy ui 불러오기 -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/daisyui/4.6.1/full.css" />
-
+<script data-cfasync="false" type="text/javascript"
+	src="https://cdn.rawgit.com/dwyl/html-form-send-email-via-google-script-without-server/master/form-submission-handler.js"></script>
 <!-- 폰트어썸 불러오기 -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
@@ -24,6 +22,15 @@
 <!-- 제이쿼리 불러오기 -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<!-- daisy ui 불러오기 -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/daisyui/4.6.1/full.css" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+	rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -32,6 +39,16 @@
 <style>
 :root {
 	--bgc-color: #263360;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+	display: inline-block;
+}
+
+ul li {
+	list-style: disc;
 }
 
 body {
@@ -81,18 +98,6 @@ body {
 	object-position: center;
 }
 
-.background-image {
-	background-image:
-		url('https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=2094&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
-	height: 100vh;
-	overflow: auto;
-	background-size: cover;
-	align-self: stretch;
-}
-
 .text-box {
 	position: relative;
 	display: flex;
@@ -138,18 +143,22 @@ body {
 
 .Head-bar {
 	display: flex;
-	margin-top: 39px;
 	width: 100%;
 	max-width: 1735px;
 	gap: 20px;
-	font-size: 30px;
+	font-size: 25px;
 	color: #fff;
 	font-weight: 400;
+	position: fixed; /* 고정 위치로 설정 */
+	z-index: 999;
+	background-color: #263360;
+	height: 85px;
 }
 
 @media ( max-width : 991px) {
 	.Head-bar {
 		max-width: 100%;
+		max-height: 100%;
 		flex-wrap: wrap;
 	}
 }
@@ -159,11 +168,12 @@ body {
 	font-family: 'Playfair Display', sans-serif;
 	flex-grow: 1;
 	flex-basis: auto;
+	margin-top: 25px;
 }
 
 .head-icons {
 	display: flex;
-	gap: 20px;
+	gap: 40px;
 	white-space: nowrap;
 }
 
@@ -177,7 +187,7 @@ body {
 	border-bottom-width: 1px;
 	width: 100%;
 	max-width: 1800px;
-	margin-top: 50px;
+	margin-top: 85px;
 }
 
 /* 반응형 디자인을 위한 미디어 쿼리 추가 */
@@ -198,14 +208,14 @@ body {
 
 .about-page-text {
 	color: #fff;
-	margin-top: 30px;
+	margin-top: 130px;
 	font-weight: 700;
 	font-size: 40px;
 	text-align: center;
 }
 
 .about-page {
-	margin-top: 30px;
+	margin-top: 50px;
 	width: 100%;
 	max-width: 1290px;
 }
@@ -246,6 +256,7 @@ body {
 	color: #fff;
 	font-weight: 400;
 	margin-left: 10px;
+	gap: 20;
 }
 
 .introduce-text {
@@ -280,11 +291,22 @@ body {
 	font-family: 'Playfair Display', sans-serif;
 }
 
+.velog-icon, .github-icon {
+	margin-top: 18px;
+	width: 40px;
+	height: 40px;
+	width: 40px;
+}
+
+.velog-icon {
+	margin-left: 10px;
+}
+
 .project-page-title {
 	color: #fff;
-	margin-top: 388px;
+	margin-top: 120px;
 	font-weight: 700;
-	font-size: 50px;
+	font-size: 40px;
 	text-align: center;
 }
 
@@ -296,7 +318,7 @@ body {
 	max-width: 1583px;
 	gap: 20px;
 	justify-content: space-between;
-	margin: 67px 0 1687px;
+	margin: 67px 0 270px;
 }
 
 .project-page-box {
@@ -312,16 +334,17 @@ body {
 }
 
 .project-img {
-	width: 100%;
+	width: 60%;
 	aspect-ratio: 1.75;
 	object-fit: cover;
+	border-radius: 10px;
 }
 
 .project-info {
 	color: #fff;
 	margin-top: 31px;
 	font-weight: 700;
-	font-size: 40px;
+	font-size: 30px;
 	text-align: center;
 }
 
@@ -329,16 +352,6 @@ body {
 	width: 60px;
 	aspect-ratio: 0.75;
 	fill: #fff;
-	margin: auto 0;
-}
-
-.velog-icon, .github-icon {
-	width: 60px;
-	height: 60px;
-}
-
-.velog-icon {
-	margin-left: 10px;
 }
 
 /* Responsive Styles */
@@ -395,7 +408,6 @@ body {
 	}
 	.project-page {
 		flex-wrap: wrap;
-		margin: 40px 0;
 	}
 	.project-page-value {
 		flex-wrap: wrap;
@@ -403,121 +415,239 @@ body {
 	.project-img {
 		margin-top: 40px;
 	}
-	.project-info {
-		margin-right: 10px;
+}
+/* skills css */
+.skills-page {
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	flex-direction: column;
+	margin: -10px 0 260px;
+}
+
+@media ( max-width : 991px) {
+	.skills-page {
+		flex-wrap: wrap;
 	}
+}
+
+.skills-img {
+	display: flex;
+	width: 60%;
+	aspect-ratio: 1.75;
+	width: 60%;
+}
+
+.skills-page-title {
+	color: #fff;
+	font-weight: 600;
+	font-size: 40px;
+	text-align: center;
+	margin-top: -10px;
+}
+
+.skills-img-box {
+	display: flex;
+	align-content: center;
+	justify-content: center;
+}
+
+/* contact css */
+.contact-page {
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	flex-direction: column;
+	margin: -80px 0 180px;
+}
+
+.input-Tel {
+	color: white;
+	margin-left: 54.7px;
+}
+
+.write-box {
+	margin-right: 20px;
 }
 </style>
 </head>
 <body>
-	<section class="section">
-		<div class="portfolio-container">
-			<div class="portfolio-box">
-				<div class="home-page section background-image">
-					<div class="text-box">
-						<div class="Greetings-box">
-							<div class="Greetings1">Hello</div>
-							<div class="Greetings2">안녕하세요</div>
-							<div class="Greetings3">こんにちは</div>
-						</div>
-						<div class="Welcome">Welcome to My Portfolio</div>
-						<div class="byYGY">By Yun Ga Yeon</div>
-						<img
-							src="https://cdn.builder.io/api/v1/image/assets/TEMP/b167082b1c1767fde68870850e583cb9a199cec8321417447c543b66a445b2b8?"
-							class="Scroll-down" />
-						<div class="Scroll-down-text">Scroll Down</div>
+	<div class="portfolio-container">
+		<div class="portfolio-box">
+			<div class="home-page section">
+				<img
+					src="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=2094&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+					class="home-img" />
+				<div class="text-box">
+					<div class="Greetings-box">
+						<div class="Greetings1">Hello</div>
+						<div class="Greetings2">안녕하세요</div>
+						<div class="Greetings3">こんにちは</div>
 					</div>
+					<div class="Welcome">Welcome to My Portfolio</div>
+					<div class="byYGY">By Yun Ga Yeon</div>
+					<img
+						src="https://cdn.builder.io/api/v1/image/assets/TEMP/b167082b1c1767fde68870850e583cb9a199cec8321417447c543b66a445b2b8?"
+						class="Scroll-down" />
+					<div class="Scroll-down-text">Scroll Down</div>
 				</div>
-				<header class="Head-bar">
-					<div class="logo">Yun Ga Yeon</div>
-					<div class="head-icons">
-						<div class="home-icon">Home</div>
-						<div class="about-icon">About</div>
-						<div class="project-icon">Project</div>
-						<div class="skills-icon">Skills</div>
-						<div class="contact-icon">Contact</div>
-					</div>
+			</div>
+			<header class="Head-bar">
+				<div class="logo">Yun Ga Yeon</div>
+				<div class="head-icons">
+					<div class="home-icon">Home</div>
+					<div class="about-icon">About</div>
+					<div class="project-icon">Project</div>
+					<div class="skills-icon">Skills</div>
+					<div class="contact-icon">Contact</div>
 					<div class="head-line"></div>
-				</header>
-				<div class="about-page section">
-					<div class="about-page-text">About Me</div>
-					<div class="about-box">
-						<div class="about-info">
-							<div class="about-img-box">
-								<img
-									src="https://velog.velcdn.com/images/fake150907/post/7bcb9994-a70c-4bd9-b0d4-8d18935026a6/image.jpg"
-									class="about-img" />
+				</div>
+			</header>
+			<div class="about-page-text">About Me</div>
+			<div class="about-page section">
+				<div class="about-box">
+					<div class="about-info">
+						<div class="about-img-box">
+							<img
+								src="https://velog.velcdn.com/images/fake150907/post/7bcb9994-a70c-4bd9-b0d4-8d18935026a6/image.jpg"
+								class="about-img" />
+						</div>
+						<div class="about-info-box">
+							<div class="introduce-text">안녕하세요, 개발자 꿈나무 윤가연입니다.</div>
+							<div class="info-box">
+								<div class="info-title-box">
+									<div style="margin-top: 15px;" class="info-name">Name</div>
+									<div style="margin-top: 15px;" class="info-Tel">Tel</div>
+								</div>
+								<div class="info-value">
+									<div style="margin-top: 15px;" class="info-name-value">윤가연
+										( Yun Ga Yeon)</div>
+									<div style="margin-top: 15px;" class="info-Tel-value">01054084893</div>
+								</div>
 							</div>
-							<div class="about-info-box">
-								<div class="introduce-text">안녕하세요, 개발자 꿈나무 윤가연입니다.</div>
-								<div class="info-box">
-									<div class="info-title-box">
-										<div class="info-name">Name</div>
-										<div class="info-Tel">Tel</div>
-									</div>
-									<div class="info-value">
-										<div class="info-name-value">윤가연 ( Yun Ga Yeon)</div>
-										<div class="info-Tel-value">01054084893</div>
-									</div>
-								</div>
-								<div style="font-size: 30px" class="info-Edu">Education</div>
-								<div class="info-Edu-value">
-									<ul>
-										<li>
-											<span>한국호텔관광학교 ( 2019.03~2019.12)</span>
-										</li>
-										<li>
-											<span>장수고등학교 ( 2016.03~2019.02)</span>
-										</li>
-									</ul>
-								</div>
-								<div class="info-cur-value4">
-									<div class="info-cur-title">Curriculum</div>
-									<ul>
-										<li class="info-cur-value1">JAVA(2023.10~2023.11)</li>
-										<li class="info-cur-value2">DBMS (2023,11~12)</li>
-										<li class="info-cur-value3">C (2023.11~2024.01)</li>
-										<li class="info-cur-value4">
-											<span style="font-size: 22px">[산대특] 공공데이터를 활용한 웹앱개발자
-												양성과정 ( 2023.12~2024.05 )</span>
-										</li>
-									</ul>
-									<a target="blank" href="https://github.com/fake150907">
-										<img
-											src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-social-github-256.png"
-											class="github-icon" />
-									</a>
-									<a target="blank" href="https://velog.io/@fake150907/posts">
-										<img
-											src="https://velog.velcdn.com/images/velog/profile/9aa07f66-5fcd-41f4-84f2-91d73afcec28/green%20favicon.png"
-											class="velog-icon" />
-									</a>
-								</div>
+							<div style="font-size: 30px; margin-top: 15px;" class="info-Edu">Education</div>
+							<div style="margin-left: 30px; margin-top: 15px;"
+								class="info-Edu-value">
+								<ul>
+									<li>
+										<span>한국호텔관광학교 ( 2019.03~2019.12)</span>
+									</li>
+									<li>
+										<span>장수고등학교 ( 2016.03~2019.02)</span>
+									</li>
+								</ul>
+							</div>
+							<div class="info-cur-value4">
+								<div style="margin-top: 15px;" class="info-cur-title">Curriculum</div>
+								<ul
+									style="margin-left: 30px; margin-top: 15px; margin-bottom: 15px;">
+									<li class="info-cur-value1">JAVA(2023.10~2023.11)</li>
+									<li class="info-cur-value2">DBMS (2023,11~12)</li>
+									<li class="info-cur-value3">C (2023.11~2024.01)</li>
+									<li class="info-cur-value4">
+										<span style="font-size: 22px">[산대특] 공공데이터를 활용한 웹앱개발자
+											양성과정 ( 2023.12~2024.05 )</span>
+									</li>
+								</ul>
+								<a target="blank" href="https://github.com/fake150907">
+									<img
+										src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-social-github-256.png"
+										class="github-icon" />
+								</a>
+								<a target="blank" href="https://velog.io/@fake150907/posts">
+									<img
+										src="https://velog.velcdn.com/images/velog/profile/9aa07f66-5fcd-41f4-84f2-91d73afcec28/green%20favicon.png"
+										class="velog-icon" />
+								</a>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="project-page section">
-					<div class="project-page-title">Project</div>
-					<div class="project-page-box">
-						<div class="project-page-value">
-							<img loading="lazy"
+			</div>
+			<div class="project-page section">
+				<div class="project-page-title">Project</div>
+				<div class="project-page-box">
+					<div class="project-page-value">
+						<button>
+							<img
 								src="https://cdn.builder.io/api/v1/image/assets/TEMP/f02c3d3ac77704b2d81dda0df14addefffb5e3b7b0192c63447dd8b6038785ab?"
 								class="right-btn" />
+						</button>
+						<img
+							src="https://camo.githubusercontent.com/83b70f9337f8bda37ddb09be20cdbeb42936da563d085b87fbabcc2fc0c7f521/68747470733a2f2f76656c6f672e76656c63646e2e636f6d2f696d616765732f696e73616d6a753330302f706f73742f38323966316439652d623533612d346433352d623934352d3932383866636630376666392f696d6167652e706e67"
+							class="project-img" />
+						<button>
 							<img
-								src="https://camo.githubusercontent.com/83b70f9337f8bda37ddb09be20cdbeb42936da563d085b87fbabcc2fc0c7f521/68747470733a2f2f76656c6f672e76656c63646e2e636f6d2f696d616765732f696e73616d6a753330302f706f73742f38323966316439652d623533612d346433352d623934352d3932383866636630376666392f696d6167652e706e67"
-								class="project-img" />
-						</div>
-						<div class="project-info">여행,옷,날씨 3가지를 융합한 GPT기반 여행 일정 만들기
-							프로젝트</div>
+								src="https://cdn.builder.io/api/v1/image/assets/TEMP/e939fb0386ea40392c99a548c6d74a7a891eb3d70b8972e8b59c8273463337fc?"
+								class="left-btn" />
+						</button>
 					</div>
-					<img loading="lazy"
-						src="https://cdn.builder.io/api/v1/image/assets/TEMP/e939fb0386ea40392c99a548c6d74a7a891eb3d70b8972e8b59c8273463337fc?"
-						class="left-btn" />
+					<div class="project-info">여행,옷,날씨 3가지를 융합한 GPT기반 여행 일정 만들기
+						프로젝트</div>
+				</div>
+			</div>
+			<div class="skills-page section">
+				<div class="skills-page-title">Skills</div>
+				<div class="skills-img-box">
+					<img class="skills-img"
+						src="https://velog.velcdn.com/images/fake150907/post/f0d69098-ede2-4267-ba07-767b58213807/image.png">
+				</div>
+			</div>
+			<div class="contact-page section">
+				<div
+					style="text-align: center; color: white; font-size: 40px; font-weight: 600; margin-top: -30px;">Contact</div>
+				<div>
+					<form class="gform" method="POST"
+						data-email="yungayeon223@gmail.com"
+						action="https://script.google.com/macros/s/AKfycbyZeKUl8USW8rSUfOIvOPxYlOnwfN53RYPOsl-3R1szgMLNfM4h3swn74aOlFKTdcAAog/exec">
+						<table class="write-box table-box-1" border="1">
+							<tbody>
+								<tr>
+									<th style="font-weight: 500; color: white;">이름</th>
+									<td>
+										<input
+											class="title input input-bordered input-md w-full max-w-xs"
+											autocomplete="off" type="text" placeholder="이름을 입력해주세요"
+											name="name" />
+										<span class="input-Tel">연락처</span>
+										<input
+											class="title input input-bordered input-md w-full max-w-xs"
+											autocomplete="off" type="text" placeholder="전화번호를 입력해주세요"
+											name="contact" style="margin-left: 2em" />
+									</td>
+								</tr>
+								<tr>
+									<th style="font-weight: 500; color: white;">이메일</th>
+									<td>
+										<input class="title input input-bordered input-md w-full "
+											autocomplete="off" type="text" placeholder="id@email.com"
+											name="email" style="width: 780px" />
+									</td>
+								</tr>
+								<tr>
+									<th style="font-weight: 500; color: white;">내용</th>
+									<td>
+										<textarea placeholder="내용을 입력해주세요" name="body"
+											class="textarea textarea-bordered textarea-lg"
+											style="width: 780px; height: 300px;"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<th></th>
+									</br>
+									<td style="text-align: left;">
+										<button class="writeBtn btn btn-sm" id="submitBtn"
+											type="submit" value="등록"
+											style="margin-left: 345px; margin-top: 50px;">보내기</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
 				</div>
 			</div>
 		</div>
-	</section>
+	</div>
 	<script>
 		// Scroll animation using jQuery
 		$(document).ready(function() {
@@ -556,6 +686,19 @@ body {
 				header.style.backgroundColor = 'transparent'; // 헤더의 배경색을 투명으로 변경
 			}
 		});
+	</script>
+	<script>
+		document.querySelector(".gform").addEventListener("submit",
+				function(event) {
+					var checkbox = document.getElementById("checkbox");
+					// 이메일 전송 알림
+					setTimeout(function() {
+						alert("이메일이 성공적으로 전송되었습니다!");
+						document.getElementById("submitBtn").disabled = false; // 문의하기 버튼 활성화
+						document.getElementById("backBtn").disabled = false; // 뒤로가기 버튼 활성화
+					}, 100); // 1초 후에 알림을 표시합니다.
+
+				});
 	</script>
 </body>
 </html>
