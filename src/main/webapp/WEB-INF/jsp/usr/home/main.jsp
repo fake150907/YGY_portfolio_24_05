@@ -23,8 +23,8 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <!-- daisy ui 불러오기 -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/daisyui/4.6.1/full.css" />
+<!-- <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/daisyui/4.6.1/full.css" /> -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,6 +55,10 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: 'Playfair Display', sans-serif;
+}
+
+table tr {
+	padding: 10px 0;
 }
 
 .portfolio-container {
@@ -433,9 +437,10 @@ body {
 
 .skills-img {
 	display: flex;
-	width: 60%;
-	aspect-ratio: 1.75;
-	width: 60%;
+	width: 80%;
+	object-fit: cover;
+	margin-top: 20px;
+	margin-bottom: 50px;
 }
 
 .skills-page-title {
@@ -443,13 +448,15 @@ body {
 	font-weight: 600;
 	font-size: 40px;
 	text-align: center;
-	margin-top: -10px;
+	margin-top: 20px;
+	z-index: 10;
 }
 
 .skills-img-box {
 	display: flex;
 	align-content: center;
 	justify-content: center;
+	margin-left: 20px;
 }
 
 /* contact css */
@@ -458,7 +465,7 @@ body {
 	align-content: center;
 	justify-content: center;
 	flex-direction: column;
-	margin: -80px 0 180px;
+	margin: -80px 0 120px;
 }
 
 .input-Tel {
@@ -468,6 +475,19 @@ body {
 
 .write-box {
 	margin-right: 20px;
+}
+
+.writeBtn {
+	width: 100px;
+	height: 50px;
+	border: 1px solid white;
+	background-color: white;
+	border-radius: 10px;
+}
+
+.space {
+	padding: 10px 0;
+	border: none;
 }
 </style>
 </head>
@@ -549,12 +569,10 @@ body {
 											양성과정 ( 2023.12~2024.05 )</span>
 									</li>
 								</ul>
-								<a target="blank" href="https://github.com/fake150907">
-									<img
+								<a target="blank" href="https://github.com/fake150907"> <img
 										src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-social-github-256.png"
 										class="github-icon" />
-								</a>
-								<a target="blank" href="https://velog.io/@fake150907/posts">
+								</a> <a target="blank" href="https://velog.io/@fake150907/posts">
 									<img
 										src="https://velog.velcdn.com/images/velog/profile/9aa07f66-5fcd-41f4-84f2-91d73afcec28/green%20favicon.png"
 										class="velog-icon" />
@@ -590,12 +608,12 @@ body {
 				<div class="skills-page-title">Skills</div>
 				<div class="skills-img-box">
 					<img class="skills-img"
-						src="https://velog.velcdn.com/images/fake150907/post/f0d69098-ede2-4267-ba07-767b58213807/image.png">
+						src="https://velog.velcdn.com/images/fake150907/post/06462392-41c3-4455-91d1-4af75fcdca78/image.png">
 				</div>
 			</div>
 			<div class="contact-page section">
 				<div
-					style="text-align: center; color: white; font-size: 40px; font-weight: 600; margin-top: -30px;">Contact</div>
+					style="text-align: center; color: white; font-size: 40px; font-weight: 600; margin-top: 30px;">Contact</div>
 				<div>
 					<form class="gform" method="POST"
 						data-email="yungayeon223@gmail.com"
@@ -604,41 +622,44 @@ body {
 							<tbody>
 								<tr>
 									<th style="font-weight: 500; color: white;">이름</th>
-									<td>
-										<input
-											class="title input input-bordered input-md w-full max-w-xs"
-											autocomplete="off" type="text" placeholder="이름을 입력해주세요"
-											name="name" />
-										<span class="input-Tel">연락처</span>
-										<input
-											class="title input input-bordered input-md w-full max-w-xs"
-											autocomplete="off" type="text" placeholder="전화번호를 입력해주세요"
-											name="contact" style="margin-left: 2em" />
+									<td class="space" colspan="3">
+										<input class="title" autocomplete="off" type="text"
+											placeholder="이름을 입력해주세요" name="name"
+											style="margin-left: 10px; padding: 10px; width: 780px; height: 40px; border-radius: 5px;" />
+									</td>
+								</tr>
+								<tr>
+									<th style="font-weight: 500; color: white;">연락처</th>
+									<td class="space" colspan="3">
+										<input class="title" autocomplete="off" type="text"
+											placeholder="전화번호를 입력해주세요" name="contact"
+											style="margin-left: 10px; padding: 10px; width: 780px; height: 40px; border-radius: 5px;" />
 									</td>
 								</tr>
 								<tr>
 									<th style="font-weight: 500; color: white;">이메일</th>
-									<td>
+									<td class="space" colspan="3">
 										<input class="title input input-bordered input-md w-full "
 											autocomplete="off" type="text" placeholder="id@email.com"
-											name="email" style="width: 780px" />
+											name="email"
+											style="margin-left: 10px; padding: 10px; width: 780px; height: 40px; border-radius: 5px;" />
 									</td>
 								</tr>
 								<tr>
 									<th style="font-weight: 500; color: white;">내용</th>
-									<td>
+									<td class="space" colspan="3">
 										<textarea placeholder="내용을 입력해주세요" name="body"
 											class="textarea textarea-bordered textarea-lg"
-											style="width: 780px; height: 300px;"></textarea>
+											style="margin-left: 10px; padding: 10px; width: 780px; height: 300px; border-radius: 5px;"></textarea>
 									</td>
 								</tr>
 								<tr>
 									<th></th>
 									</br>
 									<td style="text-align: left;">
-										<button class="writeBtn btn btn-sm" id="submitBtn"
-											type="submit" value="등록"
-											style="margin-left: 345px; margin-top: 50px;">보내기</button>
+										<button class="writeBtn" id="submitBtn" type="submit"
+											value="등록"
+											style="font-weight: bold; margin-left: 345px; margin-top: 50px;">보내기</button>
 									</td>
 								</tr>
 							</tbody>
